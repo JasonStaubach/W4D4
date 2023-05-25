@@ -37,21 +37,33 @@ end
 #time complexity O(n^2)
 #memory complexity O(n^2)
 
+
 def largest_contiguous_subsum_fast(list)
-    largest_sum = 0
-    current_sum = 0
     pointer1 = 0
-    pointer2 = 0
+    sum = 0
     while pointer1 < list.length
-        largest_sum = list[pointer1,-1] if largest_sum < list[pointer1,-1]
+        if list[pointer1..-1].sum > sum
+            sum = list[pointer1..-1].sum 
+            i = pointer1
+        end
         pointer1 += 1
+
     end
-    while pointer2 < list.length
+    list.reverse!
+    pointer1 = 0
+    sum = 0
+    while pointer1 < list.length
+        if list[pointer1..-1].sum > sum
+            sum = list[pointer1..-1].sum 
+            j = pointer1
+        end
+        pointer1 += 1
 
+    end
+    list.reverse!
+    list[i..j].sum
 end
-
-
-
-
 list = [5, 3, -7]
 p largest_contiguous_subsum_fast(list)
+
+
