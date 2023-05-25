@@ -66,4 +66,3 @@ end
 list = [5, 3, -7]
 p largest_contiguous_subsum_fast(list)
 
-
