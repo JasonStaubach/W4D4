@@ -18,7 +18,34 @@ def second_anagram?(word1,word2)
     arr2.length == 0
 
 end
-p second_anagram?("abc", 'cab')
-    
-   
+
+second_anagram?("abc", 'cab')
+
+def third_anagram?(word1,word2)
+    alpha = ("a".."z").to_a
+    word1a = word1.split("")
+    word2a = word2.split("")
+    sort(word2a) == sort(word1a)
+end
+
+
+def sort(arr)
+    return [] if arr.empty?
+    first = arr[0]
+    left = arr[1..-1].select{|ele| ele < first }
+    right = arr[1..-1].select{|ele| ele >= first}
+    sort(left) + [first] + sort(right)
+end
+
+def fourth_anagram?(word1,word2)
+    hash = Hash.new(0)
+    word1.each_char{|char| hash[char] += 1}
+    word2.each_char{|char| hash[char] -= 1}
+    hash.all? {|k,v| v == 0}
+end
+
+p fourth_anagram?("cat","atj")
+
+
+
    
