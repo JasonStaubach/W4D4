@@ -38,17 +38,15 @@ end
 #memory complexity O(n^2)
 
 def largest_contiguous_subsum_fast(list)
-    largest_sum = list[0]
-    current_sum = list[0]
-    arr = []
-        (0...list.length).each do |i|
-            n = list.length
-
-            # arr.concat([list[0..i].take(i)]) if i > 0
-            # arr.concat([list[i..i]]) if i > 0
-            arr.concat([list[i..-1].take(n-i)])#]) unless i + 1 == n 
-        end
-    arr
+    largest_sum = 0
+    current_sum = 0
+    pointer1 = 0
+    pointer2 = 0
+    while pointer1 < list.length
+        largest_sum = list[pointer1,-1] if largest_sum < list[pointer1,-1]
+        pointer1 += 1
+    end
+    while pointer2 < list.length
 
 end
 
