@@ -21,10 +21,25 @@ def sort_two_val(arr, val)
         end
     end
     !(last == first)
-    
+end
+
+def hash_map(arr, goal)
+    hash = Hash.new(false)
+    arr.each {|ele| hash[ele] = true}
+
+    hash.each do |key, val|
+        test = goal - key
+
+        if hash[test] == true
+            unless key == test
+                return true 
+            end
+        end
+    end
+    false
 end
 
 
 arr = [5, 1, 0, 7]
-p sort_two_val(arr, 5) # => should be true
-p sort_two_val(arr, 10) # => should be false
+p hash_map(arr, 8) # => should be true
+p hash_map(arr, 10) # => should be false
